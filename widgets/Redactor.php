@@ -45,6 +45,10 @@ class Redactor extends InputWidget
         if ($this->clientOptions['fileUpload']) {
             $this->clientOptions['fileUploadErrorCallback'] = new JsExpression("function(json){alert(json.error);}");
         }
+
+        $request = Yii::$app->getRequest();
+        $this->clientOptions['uploadFields'] = [$request->csrfParam=>$request->getCsrfToken()];
+
         $this->registerBundles();
         $this->registerScript();
     }
