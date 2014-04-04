@@ -23,6 +23,7 @@ class Redactor extends InputWidget
 {
 
     public $options = [];
+    public $clientOptions = [];
     public $clientDefaultOptions = [
         'imageGetJson' => '/redactor/upload/imagejson',
         'imageUpload' => '/redactor/upload/image',
@@ -65,9 +66,8 @@ class Redactor extends InputWidget
     public function registerBundles()
     {
         RedactorAsset::register($this->getView());
-        if (!isset($this->clientOptions['lang']) && Yii::$app->language != 'en_US') {
-            $this->clientOptions['lang'] = Yii::$app->language;
-            RedactorRegionalAsset::register($this->getView());
+        if(isset($this->clientOptions['lang'])){
+            RedactorRegionalAsset::register($this->getView())->language = $this->clientOptions['lang'];
         }
         if (isset($this->clientOptions['plugins']) && count($this->clientOptions['plugins'])) {
             foreach ($this->clientOptions['plugins'] as $plugin) {
