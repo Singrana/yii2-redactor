@@ -17,7 +17,7 @@ use Yii;
 class RedactorPluginClipsAsset extends \yii\web\AssetBundle
 {
 
-    public $sourcePath = '@vendor/yiidoc/yii2-redactor/assets';
+    public $sourcePath = '@vendor/yiiext/imperavi-redactor-widget/assets';
     public $depends = ['yii\redactor\widgets\RedactorAsset'];
     public $js = ['plugins/clips/clips.js'];
     public $css = ['plugins/clips/clips.css'];

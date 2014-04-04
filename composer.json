@@ -28,6 +28,7 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "yiisoft/yii2": "*"
+        "yiisoft/yii2": "*",
+        "yiiext/imperavi-redactor-widget":"*"
     }
 }

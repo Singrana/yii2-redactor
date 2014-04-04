@@ -17,8 +17,15 @@ use Yii;
 class RedactorRegionalAsset extends \yii\web\AssetBundle
 {
 
-    public $sourcePath = '@vendor/yiidoc/yii2-redactor/assets';
+    public $sourcePath = '@vendor/yiiext/imperavi-redactor-widget/assets';
     public $depends = ['yii\redactor\widgets\RedactorAsset'];
-    public $js = ['lang/redactor-i18n.js'];
+    public $js = [];
+
+    public function registerAssetFiles($view)
+    {
+        $language = $this->language ? $this->language : Yii::$app->language;
+        $this->js[] = 'lang/'.$language . '.js';
+        parent::registerAssetFiles($view);
+    }
 
 }
