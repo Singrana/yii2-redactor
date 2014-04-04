@@ -12,6 +12,7 @@ use Yii;
 use yii\widgets\InputWidget;
 use yii\helpers\Html;
 use yii\helpers\Json;
+use yii\helpers\ArrayHelper;
 use yii\web\JsExpression;
 
 /**
@@ -22,7 +23,7 @@ class Redactor extends InputWidget
 {
 
     public $options = [];
-    public $clientOptions = [
+    public $clientDefaultOptions = [
         'imageGetJson' => '/redactor/upload/imagejson',
         'imageUpload' => '/redactor/upload/image',
         'clipboardUploadUrl' => '/redactor/upload/clipboard',
@@ -36,6 +37,8 @@ class Redactor extends InputWidget
         } else {
             $this->options['id'] = $this->getId();
         }
+        $this->clientOptions = ArrayHelper::merge($this->clientDefaultOptions,$this->clientOptions);
+
         if ($this->clientOptions['imageUpload']) {
             $this->clientOptions['imageUploadErrorCallback'] = new JsExpression("function(json){alert(json.error);}");
         }
