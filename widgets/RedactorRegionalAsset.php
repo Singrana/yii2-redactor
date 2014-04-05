@@ -19,6 +19,7 @@ class RedactorRegionalAsset extends \yii\web\AssetBundle
 
     public $sourcePath = '@vendor/yiiext/imperavi-redactor-widget/assets';
     public $depends = ['yii\redactor\widgets\RedactorAsset'];
+    public $language;
     public $js = [];
 
     public function registerAssetFiles($view)
