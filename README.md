@@ -26,19 +26,19 @@ Usage:
         return [
             'file' => [
                 'class'=>'yii\redactor\actions\FileUploadAction',
-                'uploadDir'=>'@webroot/uploads/blogs/files/'
+                'uploadDir'=>'@webroot/uploads/files/'
             ],
             'image' => [
                 'class'=>'yii\redactor\actions\ImageUploadAction',
-                'uploadDir'=>'@webroot/uploads/blogs/images/'
+                'uploadDir'=>'@webroot/uploads/images/'
             ],
             'imagejson' => [
                 'class'=>'yii\redactor\actions\ImageGetJsonAction',
-                'sourcePath'=>'@webroot/uploads/blogs/images/'
+                'sourcePath'=>'@webroot/uploadsimages/'
             ],
-            'file' => [
+            'clipboard' => [
                 'class'=>'yii\redactor\actions\ClipboardUploadAction',
-                'uploadDir'=>'@webroot/uploads/blogs/files/'
+                'uploadDir'=>'@webroot/uploads/files/'
             ],
         ];
     }
