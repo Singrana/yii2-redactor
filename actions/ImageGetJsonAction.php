@@ -21,6 +21,8 @@ class ImageGetJsonAction extends \yii\base\Action
 {
 
     public $sourcePath = '@webroot/uploads';
+    public $baseUrl = '@web';
+    public $baseDir = '@webroot';
 
     public function init()
     {
@@ -31,7 +33,7 @@ class ImageGetJsonAction extends \yii\base\Action
 
     public function run()
     {
-        $files = FileHelper::findFiles($this->getPath(), ['recursive' => true, 'only' => ['.jpg', '.jpeg', '.jpe', '.png', '.gif']]);
+        $files = FileHelper::findFiles($this->getPath(), ['recursive' => true, 'only' => ['.jpg', '.jpeg', '.png', '.gif']]);
         if (is_array($files) && count($files)) {
             $result = [];
             foreach ($files as $file) {
@@ -44,16 +46,12 @@ class ImageGetJsonAction extends \yii\base\Action
 
     protected function getPath()
     {
-        if (Yii::$app->user->isGuest) {
-            return Yii::getAlias($this->sourcePath) . DIRECTORY_SEPARATOR . 'guest';
-        } else {
-            return Yii::getAlias($this->sourcePath) . DIRECTORY_SEPARATOR . Yii::$app->user->id;
-        }
+        return Yii::getAlias($this->sourcePath);
     }
 
     public function getUrl($path)
     {
-        return str_replace(DIRECTORY_SEPARATOR, '/', str_replace(Yii::getAlias('@webroot'), '', $path));
+        return  Yii::getAlias($this->baseUrl).str_replace(DIRECTORY_SEPARATOR, '/', str_replace(Yii::getAlias($this->baseDir), '', $path));
     }
 
 }

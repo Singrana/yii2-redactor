@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @link http://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -8,24 +7,23 @@
 
 namespace yii\redactor\actions;
 
-use yii\redactor\models\ImageUploadModel;
+use yii\redactor\models\FileUploadModel;
 use yii\helpers\Json;
 
 /**
  * @author Nghia Nguyen <yiidevelop@hotmail.com>
  * @since 2.0
  */
-class ImageUploadAction extends \yii\base\Action
+class FileUploadAction extends  \yii\base\Action
 {
-
     public $uploadDir = '@webroot/uploads';
     public $baseDir = '@webroot';
     public $baseUrl = '@web';
 
-    function run()
+    public function run()
     {
         if (isset($_FILES)) {
-            $model = new ImageUploadModel(['uploadDir' => $this->uploadDir,'baseDir'=>$this->baseDir,'baseUrl'=>$this->baseUrl]);
+            $model = new FileUploadModel(['uploadDir' => $this->uploadDir,'baseDir'=>$this->baseDir,'baseUrl'=>$this->baseUrl]);
             if ($model->upload()) {
                 echo $model->toJson();
             } else {

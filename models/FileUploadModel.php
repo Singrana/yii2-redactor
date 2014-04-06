@@ -22,7 +22,9 @@ class FileUploadModel extends \yii\base\Model
 {
 
     public $file;
+    public $baseDir;
     public $uploadDir;
+    public $baseUrl;
     private $_filename;
 
     public function rules()
@@ -48,18 +50,14 @@ class FileUploadModel extends \yii\base\Model
 
     public function getPath()
     {
-        if (Yii::$app->user->isGuest) {
-            $path = Yii::getAlias($this->uploadDir) . DIRECTORY_SEPARATOR . 'guest';
-        } else {
-            $path = Yii::getAlias($this->uploadDir) . DIRECTORY_SEPARATOR . Yii::$app->user->id;
-        }
+        $path = Yii::getAlias($this->uploadDir);
         FileHelper::createDirectory($path);
         return $path . DIRECTORY_SEPARATOR . $this->normalizeFilename();
     }
 
     public function getUrl()
     {
-        return str_replace(DIRECTORY_SEPARATOR, '/', str_replace(Yii::getAlias('@webroot'), '', $this->getPath()));
+        return Yii::getAlias($this->baseUrl).str_replace(DIRECTORY_SEPARATOR, '/', str_replace(Yii::getAlias($this->baseDir), '', $this->getPath()));
     }
 
     protected function getExtensionName()

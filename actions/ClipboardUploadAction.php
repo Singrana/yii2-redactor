@@ -21,6 +21,8 @@ class ClipboardUploadAction extends \yii\base\Action
 {
 
     public $uploadDir = '@webroot/uploads';
+    public $baseDir = '@webroot';
+    public $baseUrl = '@web';
     private $_contentType;
     private $_data;
     private $_filename;
@@ -59,18 +61,14 @@ class ClipboardUploadAction extends \yii\base\Action
 
     protected function getPath()
     {
-        if (Yii::$app->user->isGuest) {
-            $path = Yii::getAlias($this->uploadDir) . DIRECTORY_SEPARATOR . 'guest';
-        } else {
-            $path = Yii::getAlias($this->uploadDir) . DIRECTORY_SEPARATOR . Yii::$app->user->id;
-        }
+        $path = Yii::getAlias($this->uploadDir);
         FileHelper::createDirectory($path);
         return $path . DIRECTORY_SEPARATOR . $this->getFilename();
     }
 
     protected function getUrl()
     {
-        return str_replace(DIRECTORY_SEPARATOR, '/', str_replace(Yii::getAlias('@webroot'), '', $this->getPath()));
+        return Yii::getAlias($this->baseUrl).str_replace(DIRECTORY_SEPARATOR, '/', str_replace(Yii::getAlias($this->baseDir), '', $this->getPath()));
     }
 
 }
