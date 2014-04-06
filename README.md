@@ -62,3 +62,44 @@ Usage:
     ])?>
 
 ```
+
+Advanced application template
+--------------
+#### in config.php
+```php
+       'urlManagerFrontend'=>[
+            'class' => 'yii\web\UrlManager',
+            'baseUrl'=>'',
+            'hostInfo'=>'http://example.com'
+       ],
+```
+#### in controller
+```php
+        public function actions(){
+            return [
+                'image' => [
+                    'class'=>'yii\redactor\actions\ImageUploadAction',
+                    'uploadDir'=>'@frontend/web/uploads/images/',
+                    'baseDir'=>'@frontend/web',
+                    'baseUrl'=>Yii::$app->urlManagerFrontend->hostInfo.Yii::$app->urlManagerFrontend->baseUrl
+                ],
+                'imagejson' => [
+                    'class'=>'yii\redactor\actions\ImageGetJsonAction',
+                    'sourcePath'=>'@frontend/web/uploads/images/'
+                    'baseDir'=>'@frontend/web',
+                    'baseUrl'=>Yii::$app->urlManagerFrontend->hostInfo.Yii::$app->urlManagerFrontend->baseUrl
+                ],
+        ];
+    }
+```
+#### in view
+```php
+    use \yii\helpers\Url;
+    ...
+    <?= $form->field($model,'text')->widget(yii\redactor\widgets\Redactor::className(),[
+        'clientOptions'=>[
+            'lang'=>'ru',
+            'imageGetJson' => Url::toRoute(['pages'/imagejson']),
+            'imageUpload' => Url::toRoute(['pages'/image'])
+        ]
+    ])?>
