@@ -53,10 +53,10 @@ Usage:
             'lang'=>'ru',
             'formattingTags'=>['p', 'blockquote', 'pre', 'h2', 'h3', 'h4'],
             'imageTabLink'=>false,
-            'imageGetJson' => Url::toRoute(['pages'/imagejson']),
-            'imageUpload' => Url::toRoute(['pages'/image']),
+            'imageGetJson' => Url::toRoute(['pages/imagejson']),
+            'imageUpload' => Url::toRoute(['pages/image']),
             'clipboardUploadUrl' =>Url::toRoute(['pages/clipboard']),
-            'fileUpload' => Url::toRoute(['pages'/file']),
+            'fileUpload' => Url::toRoute(['pages/file']),
             'plugins' => ['clips', 'fullscreen']
         ]
     ])?>
@@ -101,7 +101,7 @@ Advanced application template
     <?= $form->field($model,'text')->widget(yii\redactor\widgets\Redactor::className(),[
         'clientOptions'=>[
             'lang'=>'ru',
-            'imageGetJson' => Url::toRoute(['pages'/imagejson']),
-            'imageUpload' => Url::toRoute(['pages'/image'])
+            'imageGetJson' => Url::toRoute(['pages/imagejson']),
+            'imageUpload' => Url::toRoute(['pages/image'])
         ]
     ])?>
