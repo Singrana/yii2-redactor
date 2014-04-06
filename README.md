@@ -67,11 +67,13 @@ Advanced application template
 --------------
 #### in config.php
 ```php
+    'components' => [
        'urlManagerFrontend'=>[
             'class' => 'yii\web\UrlManager',
             'baseUrl'=>'',
             'hostInfo'=>'http://example.com'
        ],
+    ]
 ```
 #### in controller
 ```php
