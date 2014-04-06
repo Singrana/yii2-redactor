@@ -33,7 +33,7 @@ class ImageGetJsonAction extends \yii\base\Action
 
     public function run()
     {
-        $files = FileHelper::findFiles($this->getPath(), ['recursive' => true, 'only' => ['.jpg', '.jpeg', '.png', '.gif']]);
+        $files = FileHelper::findFiles($this->getPath(), ['recursive' => true, 'only' => ['*.jpg', '*.jpeg', '*.png', '*.gif']]);
         if (is_array($files) && count($files)) {
             $result = [];
             foreach ($files as $file) {
