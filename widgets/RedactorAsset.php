@@ -21,13 +21,11 @@ class RedactorAsset extends \yii\web\AssetBundle
     public function init()
     {
 
-        if (YII_DEBUG) {
+        if (YII_DEBUG)
             $this->js[] = 'redactor.js';
-            $this->css[] = 'redactor.css';
-        } else {
+        else
             $this->js[] = 'redactor.min.js';
-            $this->css[] = 'redactor.min.css';
-        }
+        $this->css[] = 'redactor.css';
     }
 
 }
