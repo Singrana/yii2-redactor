@@ -1,24 +1,19 @@
 {
-    "name": "karneds/yii2-redactor",
+    "name": "singrana/yii2-redactor",
     "description": "Extension redactor for Yii2 Framework.",
     "keywords": ["yii2", "extension", "redactor", "WYSIWYG", "html editor", "imperavi"],
     "type": "yii2-extension",
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/karneds/yii2-redactor/issues?state=open",
-        "wiki": "https://github.com/karneds/yii2-redactor/wiki",
-        "source": "https://github.com/karneds/yii2-redactor"
+        "issues": "https://github.com/singrana/yii2-redactor/issues?state=open",
+        "wiki": "https://github.com/singrana/yii2-redactor/wiki",
+        "source": "https://github.com/singrana/yii2-redactor"
     },
     "authors": [
         {
-            "name": "Nghia Nguyen",
-            "email": "yiidevelop@hotmail.com",
-            "homepage": "http://www.yiidev.com"
-        },
-        {
-            "name": "Popov Denis",
-            "email": "karneds@gmail.com",
-            "homepage": "http://lumenarium.biz"
+            "name": "Singrana",
+            "email": "singrana@singrana.com",
+            "homepage": "http://singrana.com"
         }
     ],
     "autoload": {
