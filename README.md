@@ -6,13 +6,13 @@ The preferred way to install  this extension  is through [composer](http://getco
 Either run
 
 ```
-php composer.phar require --prefer-dist "karneds/yii2-redactor *"
+php composer.phar require --prefer-dist "singrana/yii2-redactor *"
 ```
 
 or add
 
 ```json
-"karneds/yii2-redactor": "*"
+"singrana/yii2-redactor": "*"
 ```
 
 to the require section of your composer.json.
